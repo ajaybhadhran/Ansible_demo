@@ -1,4 +1,10 @@
 ---
+- name: Reboot machine every Saturday 4am
+  ansible.builtin.cron:
+    name: "a job for reboot"
+    special_time: reboot
+    job: "0 4  *  *  sat/sbit/shutdown –r "
+
 - hosts: localhost
   connection: local
   become: true
@@ -55,4 +61,4 @@
       name: ansible auto-provision
       user: velociraptor
       minute: "*/10"
-      job: ansible-pull -o -U https://github.com/jlacroix82/ansible_pull_tutorial.git
+      job: ansible-pull -o -U https://github.com/ajaybhadhran/Ansible_demo.git
